@@ -1,1 +1,189 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A little gift for you ♡</title><style>:root{font-family:system-ui,-apple-system,sans-serif;color:#29304c;background:#f6f4fb}*{box-sizing:border-box}body{margin:0}header{text-align:center;padding:55px 18px 24px;background:linear-gradient(135deg,#e9e9fc,#f7eafa)}h1{font-size:clamp(26px,6vw,42px);margin:12px 0}header p{color:#666985}main{max-width:1000px;margin:30px auto;padding:0 18px}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px}.tile{background:white;border-radius:18px;overflow:hidden;box-shadow:0 5px 22px #46466b14}.tile img{display:block;width:100%;height:230px;object-fit:contain;background:#eeeef8;cursor:zoom-in}.tile .info{padding:14px}.tile h2{font-size:16px;margin:0 0 12px}.actions{display:flex;gap:8px;flex-wrap:wrap}a,button{font:inherit;border:0;border-radius:10px;padding:10px 14px;cursor:pointer;text-decoration:none;background:#565a8f;color:white;font-size:14px}button{background:#e9e9f5;color:#3e436a}.missing{padding:45px 10px;text-align:center;color:#777; background:#eeeef8}footer{text-align:center;color:#7d7d92;padding:40px 10px;font-size:13px}dialog{border:0;padding:14px;border-radius:16px;max-width:95vw;max-height:95vh}dialog img{max-width:85vw;max-height:75vh;object-fit:contain;display:block}dialog::backdrop{background:#17182bc9}.close{display:block;margin:10px 0 0 auto}</style></head><body><header><div>✦ A LITTLE GIFT FOR YOU ✦</div><h1>You've found a secret! ♡</h1><p>謝謝你來領取這份小禮物！點開喜歡的插畫，就可以儲存囉。</p></header><main><div id="gallery" class="gallery"></div></main><footer>Made with love ♡　僅供個人收藏，請勿二次販售</footer><dialog id="preview"><img id="large" alt="插畫預覽"><button class="close" onclick="document.getElementById('preview').close()">關閉 ✕</button></dialog><script>const gallery=document.getElementById('gallery');for(let i=1;i<=9;i++){const name=`art${String(i).padStart(2,'0')}.png`;const path=`images/${name}`;const tile=document.createElement('article');tile.className='tile';const img=document.createElement('img');img.src=path;img.alt=`限定插畫 ${i}`;img.loading='lazy';img.onerror=()=>{img.replaceWith(Object.assign(document.createElement('div'),{className:'missing',textContent:`插畫 ${i} 尚未放入`}));};img.onclick=()=>{document.getElementById('large').src=path;document.getElementById('preview').showModal()};const info=document.createElement('div');info.className='info';const heading=document.createElement('h2');heading.textContent=`限定插畫 ${String(i).padStart(2,'0')}`;const actions=document.createElement('div');actions.className='actions';const open=document.createElement('a');open.href=path;open.target='_blank';open.rel='noopener';open.textContent='開啟原圖';const download=document.createElement('a');download.href=path;download.download=name;download.textContent='下載圖片 ↓';actions.append(open,download);info.append(heading,actions);tile.append(img,info);gallery.append(tile)}</script></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A little gift for you ♡</title>
+
+  <style>
+    /* 全站底色和基本文字顏色 */
+    :root {
+      font-family:system-ui,-apple-system,sans-serif;
+      color:#4f5e74;
+      background:#fffdf1
+    }
+    * {
+      box-sizing:border-box
+    }
+    body {
+      margin:0
+    }
+    header {
+      text-align:center;
+      padding:55px 18px 24px;
+      background:linear-gradient(135deg,#8eb5e0,#91c0e0)
+    }
+    h1 {
+      font-size:clamp(26px,6vw,42px);
+      margin:12px 0
+    }
+    header p {
+      color:#666985
+    }
+    main {
+      max-width:1000px;
+      margin:30px auto;
+      padding:0 18px
+    }
+    .gallery {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      gap:20px
+    }
+    .tile {
+      background:white;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 5px 22px #46466b14
+    }
+    .tile img {
+      display:block;
+      width:100%;
+      height:230px;
+      object-fit:contain;
+      background:#eeeef8;
+      cursor:zoom-in
+    }
+    .tile .info {
+      padding:14px
+    }
+    .tile h2 {
+      font-size:16px;
+      margin:0 0 12px
+    }
+    .actions {
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap
+    }
+    a,button {
+      font:inherit;
+      border:0;
+      border-radius:10px;
+      padding:10px 14px;
+      cursor:pointer;
+      text-decoration:none;
+      background:#565a8f;
+      color:white;
+      font-size:14px
+    }
+    button {
+      background:#e9e9f5;
+      color:#3e436a
+    }
+    .missing {
+      padding:45px 10px;
+      text-align:center;
+      color:#777;
+      background:#eeeef8
+    }
+    footer {
+      text-align:center;
+      color:#7d7d92;
+      padding:40px 10px;
+      font-size:13px
+    }
+    dialog {
+      border:0;
+      padding:14px;
+      border-radius:16px;
+      max-width:95vw;
+      max-height:95vh
+    }
+    dialog img {
+      max-width:85vw;
+      max-height:75vh;
+      object-fit:contain;
+      display:block
+    }
+    dialog::backdrop {
+      background:#17182bc9
+    }
+    .close {
+      display:block;
+      margin:10px 0 0 auto
+    }
+  </style>
+</head>
+<body>
+  <!-- 頂部標題與介紹文字：可直接修改 -->
+  <header>
+    <div>✦ Stray Kids World Tour RUN IT TAIPEI ✦</div>
+    <h1> Jinibit的演場會限定圖片!♡</h1>
+    <p>謝謝你來找我領取應援♡ཾֻ𑙕 . ᩙ.𓈒ꛒྀི۶ৎ יִ</p>
+  </header>
+
+  <main>
+    <div id="gallery" class="gallery"></div>
+  </main>
+
+  <!-- 頁尾文字：可直接修改 -->
+  <footer>僅供個人收藏，請勿商用</footer>
+
+  <dialog id="preview">
+    <img id="large" alt="插畫預覽">
+    <button class="close" onclick="document.getElementById('preview').close()">關閉 ✕</button>
+  </dialog>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    
+    for (let i = 1; i <= 9; i++) {
+      const name = `art${String(i).padStart(2, '0')}.png`;
+      const path = `images/${name}`;
+      const tile = document.createElement('article');
+      tile.className = 'tile';
+    
+      const img = document.createElement('img');
+      img.src = path;
+      img.alt = `限定插畫 ${i}`;
+      img.loading = 'lazy';
+      img.onerror = () => {
+        img.replaceWith(
+          Object.assign(document.createElement('div'), {
+            className: 'missing',
+            textContent: `插畫 ${i} 尚未放入`
+          })
+        );
+      };
+      img.onclick = () => {
+        document.getElementById('large').src = path;
+        document.getElementById('preview').showModal();
+      };
+    
+      const info = document.createElement('div');
+      info.className = 'info';
+      const heading = document.createElement('h2');
+      heading.textContent = `𝚒𝚖𝚊𝚐𝚎 ${String(i).padStart(2, '0')}`;
+    
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+      const open = document.createElement('a');
+      open.href = path;
+      open.target = '_blank';
+      open.rel = 'noopener';
+      open.textContent = '開啟圖片';
+    
+      const download = document.createElement('a');
+      download.href = path;
+      download.download = name;
+      download.textContent = '下載圖片 ↓';
+    
+      actions.append(open, download);
+      info.append(heading, actions);
+      tile.append(img, info);
+      gallery.append(tile);
+    }
+  </script>
+</body>
+</html>
